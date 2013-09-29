@@ -1,0 +1,118 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.7
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 30, 2010 at 11:17 AM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `products`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `cat_id` int(11) NOT NULL auto_increment,
+  `cat_name` varchar(80) NOT NULL,
+  PRIMARY KEY  (`cat_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
+(1, 'Electronics Goods'),
+(2, 'Household Items'),
+(3, 'Books'),
+(4, 'Furnitures');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `product_id` int(11) NOT NULL auto_increment,
+  `product_name` varchar(150) NOT NULL,
+  `subcat_id` int(11) NOT NULL,
+  `price` varchar(20) NOT NULL,
+  `description` text NOT NULL,
+  `product_image` varchar(200) NOT NULL,
+  `uploaded_date` varchar(50) NOT NULL,
+  PRIMARY KEY  (`product_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `subcat_id`, `price`, `description`, `product_image`, `uploaded_date`) VALUES
+(1, ' Drupal', 4, '250.00', 'for details of drupal  developement', '1.png', '30/04/2010'),
+(2, 'Joomla', 8, '230.00', 'all about joomla', '2.jpeg', '30/04/2010'),
+(3, 'Dell', 1, '50,000.00', 'very nice laptop', '3.jpeg', '30/04/2010'),
+(4, 'IBM', 2, '1,25,000.00', 'dual core computer with high speed cache\r\nmemory', '4.jpeg', '30/04/2010'),
+(5, 'alchemist', 6, '200', 'very nice book', '5.jpeg', '30/04/2010'),
+(6, 'Data structure', 8, '200', 'very good book', '6.jpeg', '30/04/2010'),
+(7, 'Cup', 4, '25', 'for good taking tea', '7.jpeg', '30/04/2010'),
+(8, 'Onida', 3, '25000', 'good flat T.V.', '8.jpeg', '30/04/2010'),
+(9, 'fower', 4, '250', 'good in decorate home', '9.jpeg', '30/04/2010');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategory`
+--
+
+CREATE TABLE IF NOT EXISTS `subcategory` (
+  `subcat_id` int(11) NOT NULL auto_increment,
+  `cat_id` int(11) NOT NULL,
+  `subcat_name` varchar(80) NOT NULL,
+  PRIMARY KEY  (`subcat_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `subcategory`
+--
+
+INSERT INTO `subcategory` (`subcat_id`, `cat_id`, `subcat_name`) VALUES
+(1, 1, 'Laptops'),
+(2, 1, 'Computers'),
+(3, 1, 'Television'),
+(4, 2, 'Interior Decoration items'),
+(5, 2, 'Gas Oven'),
+(6, 3, 'Story Books'),
+(7, 3, 'Cartoons'),
+(8, 3, 'Technology'),
+(9, 4, 'Tables'),
+(10, 4, 'Chairs');
